@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Каталог</title>
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+
+    <header th:insert="blocks/header :: header"></header>
+
+    <!-- Описание каталога -->
+
+    <div class="py-5 text-center">
+        <h2><ya-tr-span data-index="0-0" data-value="Checkout form" data-translation="Каталог" data-type="trSpan" data-selected="false">Каталог</ya-tr-span></h2>
+        <p class="lead"><ya-tr-span data-index="1-0" data-value="Below is an example form built entirely with Bootstrap’s form controls. " data-translation="Ниже приведен пример формы, полностью построенной с помощью элементов управления формами Bootstrap. " data-type="trSpan" data-selected="false">УКРАШЕНИЯ, СОЗДАННЫЕ ДЕВУШКАМИ-ЮВЕЛИРАМИ, НЕБО ДЛЯ КОТОРЫХ - ОСНОВНОЙ ИСТОЧНИК ВДОХНОВЕНИЯ. </ya-tr-span><ya-tr-span data-index="1-1" data-value="Each required form group has a validation state that can be triggered by attempting to submit the form without completing it." data-translation="Каждая требуемая группа форм имеет состояние проверки, которое может быть вызвано попыткой отправить форму без ее заполнения." data-type="trSpan" data-selected="false">В СВОЕЙ РАБОТЕ МЫ ИСПОЛЬЗУЕМ ТОЛЬКО НАТУРАЛЬНЫЕ КАМНИ В СТРЕМЛЕНИИ ПОКАЗАТЬ ИХ КРАСОТУ И НЕПОДДЕЛЬНОЕ ОЧАРОВАНИЕ.</ya-tr-span></p>
+    </div>
+
+    <!-- Альбом с продуктами -->
+
+    <div class="album py-5 bg-light">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4" th:each="el : ${products}">
+                    <div class="card mb-4 shadow-sm">
+
+                        <img th:src="${el.img}" width="100%" height="100%" align="center">
+                        <div class="card-body">
+                            <a class="p-2 text-dark" th:align="center" th:text="${el.name}" th:href="'/catalog/' + ${el.product_id}"></a>
+                            <pre></pre>
+                            <p class="card-text" th:text="${el.price} + ' р.'"/>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a class="p-2 text-dark" href="">Добавить в корзину</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+</body>
+</html>
